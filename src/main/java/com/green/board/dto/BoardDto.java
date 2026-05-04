@@ -17,6 +17,7 @@ public class BoardDto {
 	this.regdate = regdate;
 	this.hit = hit;
  }
+ 
  public int getIdx() {
 	return idx;
  }
