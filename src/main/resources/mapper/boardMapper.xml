@@ -15,9 +15,20 @@
 		FROM
 		    BOARD
 		WHERE
-	    MENU_ID = #{ menu_id  }
+	    MENU_ID = #{menu_id}
 		ORDER BY IDX DESC
 	</select>
 	
+	<select id="getBoard">
+		select * from Board where idx = #{idx}
+	</select>
+	
+	<delete id="deleteBoard">
+		delete from Board where idx = #{idx}
+	</delete>
+	
+	<update id="incHit">
+		update Board set hit = hit + 1 where idx = #{idx}
+	</update>
 	
 </mapper>

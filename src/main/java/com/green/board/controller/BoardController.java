@@ -55,4 +55,54 @@ public class BoardController {
 		boardMapper.insertboard(boardDto);
 		return "redirect:/Board/List";
 	}
+// --------------------------------------------------------------
+	@RequestMapping("/Delete")
+	public  ModelAndView  delete(BoardDto boardDto) {
+		
+		// db 의 자료를 삭제
+		boardMapper.deleteBoard(boardDto );
+		
+		// 목록으로 이동
+		ModelAndView  mv  =  new ModelAndView();
+		mv.setViewName("home");
+		return        mv;
+	}
+// --------------------------------------------------------------	
+	@RequestMapping("/View")
+	public ModelAndView view (BoardDto boardDto) {
+		// 조회수증가
+		boardMapper.incHit(boardDto);
+		// 메뉴 목록
+		List<MenuDTO> menuList = menuMapper.getMenuList();
+		// idx로 조회한 글
+		BoardDto board = boardMapper.getBoard(boardDto);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/view");
+		mv.addObject("board",board);
+		mv.addObject("menuList", menuList);
+		return mv;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

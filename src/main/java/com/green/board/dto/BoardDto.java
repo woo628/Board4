@@ -4,20 +4,30 @@ public class BoardDto {
  private int idx;
  private String menu_id;
  private String title;
+ private String content;
  private String writer;
  private String regdate;
  private int hit;
  
- public BoardDto() {}
- public BoardDto(int idx, String menu_id, String title, String writer, String regdate, int hit) {
+ 
+ public BoardDto() {} 
+ public BoardDto(int idx, String menu_id, String title, String content, String writer, String regdate, int hit) {
 	this.idx = idx;
 	this.menu_id = menu_id;
 	this.title = title;
+	this.content = content;
 	this.writer = writer;
 	this.regdate = regdate;
 	this.hit = hit;
- }
+}
  
+ 
+ public String getContent() {
+	return content;
+}
+ public void setContent(String content) {
+	this.content = content;
+ }
  public int getIdx() {
 	return idx;
  }
@@ -56,7 +66,8 @@ public class BoardDto {
  }
  @Override
  public String toString() {
-	return "BoardDto [idx=" + idx + ", menu_id=" + menu_id + ", title=" + title + ", writer=" + writer + ", regdate="
-			+ regdate + ", hit=" + hit + "]";
+	return "BoardDto [idx=" + idx + ", menu_id=" + menu_id + ", title=" + title + ", content=" + content + ", writer="
+			+ writer + ", regdate=" + regdate + ", hit=" + hit + "]";
  }
+ 
 }
