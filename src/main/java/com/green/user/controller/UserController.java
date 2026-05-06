@@ -155,8 +155,4 @@ public class UserController {
 		mv.addObject("msg",msg);
 		return mv;
 	}
-	
-	
-	
-	
 }

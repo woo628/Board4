@@ -20,6 +20,10 @@
 		UPDATE TUSER SET username = #{username}, passwd = #{passwd}, email = #{email} WHERE userid = #{userid}
 	</update>
 	
+	<update id="updateuser2">
+		UPDATE TUSER SET username = #{username}, passwd = #{passwd}, email = #{email} WHERE userid = #{userid} AND passwd = #{oldpwd}
+	</update>
+	
 	<delete id="deleteuser">
 		delete from TUSER where userid = #{userid}
 	</delete>

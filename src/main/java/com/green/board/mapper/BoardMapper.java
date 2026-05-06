@@ -5,11 +5,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.green.board.dto.BoardDto;
+import com.green.menus.dto.MenuDTO;
 
 @Mapper
 public interface BoardMapper {
 
-	List<BoardDto> getBoardList(BoardDto boardDto);
+	List<BoardDto> getBoardList(MenuDTO menuDTO);
 
 	void insertboard(BoardDto boardDto);
 

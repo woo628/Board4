@@ -18,7 +18,7 @@
     <div>&nbsp;</div>
     <div><a href="/Users/Index">회원정보</a></div>    
     <div>&nbsp;</div>
-    <div><a href="/Board/List">게시글 목록</a></div>
+    <div><a href="/Board/List?menu_id=MENU01">게시글 목록</a></div>
     <div><a href="/Board/WriteForm">게시글 추가</a></div>
   </main>
   

@@ -14,7 +14,9 @@
 		    HIT
 		FROM
 		    BOARD
-		ORDER BY IDX ASC
+		WHERE
+	    MENU_ID = #{ menu_id  }
+		ORDER BY IDX DESC
 	</select>
 	
 	
