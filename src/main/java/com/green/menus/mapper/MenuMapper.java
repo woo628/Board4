@@ -20,7 +20,9 @@ public interface MenuMapper {
 	void insertMenu2(MenuDTO menuDTO);
 
 	MenuDTO getMenu(MenuDTO menuDTO);
-	
+
+	String getname(String menu_id);
+
 }
 
 

@@ -31,41 +31,62 @@ public class BoardController {
 		
 		// menus.jsp
 		List<MenuDTO> menuList = menuMapper.getMenuList();
-		log.info("menuList:"+ menuList);
 		
 		// list.jsp
 		List<BoardDto> boardList = boardMapper.getBoardList(menuDTO);
-		log.info("boardList:"+ boardList);
+		
+		String menu_id = menuDTO.getMenu_id();
+		String menu_name = menuMapper.getname(menu_id);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/list");
 		mv.addObject("boardList", boardList);
 		mv.addObject("menuList", menuList);
+		mv.addObject("menu_name", menu_name);
+		mv.addObject("menu_id", menu_id); // 현재 메뉴정보
 		return mv;
 	}
 	
 	// /Board/WriteFrom
 	@RequestMapping("/WriteForm")
-	public String writeform() {
-		return "board/write";
+	public ModelAndView writeform(BoardDto boardDto) {
+		
+		List<MenuDTO> menuList = menuMapper.getMenuList();
+		
+		String menu_id = boardDto.getMenu_id();
+		String menu_name = menuMapper.getname(menu_id);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/write");
+		mv.addObject("menu_id", menu_id);
+		mv.addObject("menuList", menuList);
+		mv.addObject("menu_name", menu_name);
+		return mv;
 	}
 	
 	@RequestMapping("/Write")
-	public String write(BoardDto boardDto) {
+	public ModelAndView write(BoardDto boardDto) {
+		
+		String menu_id = boardDto.getMenu_id();
+		
 		boardMapper.insertboard(boardDto);
-		return "redirect:/Board/List";
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/Board/List?menu_id=" + menu_id);
+		return mv;
 	}
 // --------------------------------------------------------------
 	@RequestMapping("/Delete")
-	public  ModelAndView  delete(BoardDto boardDto) {
+	public ModelAndView delete(BoardDto boardDto) {
 		
+		String menu_id = boardDto.getMenu_id();
 		// db 의 자료를 삭제
 		boardMapper.deleteBoard(boardDto );
 		
 		// 목록으로 이동
-		ModelAndView  mv  =  new ModelAndView();
-		mv.setViewName("home");
-		return        mv;
+		ModelAndView mv  = new ModelAndView();
+		mv.setViewName("redirect:/Board/List?menu_id=" + menu_id);
+		return mv;
 	}
 // --------------------------------------------------------------	
 	@RequestMapping("/View")
@@ -77,14 +98,43 @@ public class BoardController {
 		// idx로 조회한 글
 		BoardDto board = boardMapper.getBoard(boardDto);
 		
+		board.setContent(board.getContent().replace("\n", "<br>"));
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/view");
 		mv.addObject("board",board);
 		mv.addObject("menuList", menuList);
 		return mv;
 	}
-	
-	
+// --------------------------------------------------------------
+	@RequestMapping("/UpdateForm")
+	public ModelAndView updateform (BoardDto boardDto) {
+		
+		List<MenuDTO> menuList = menuMapper.getMenuList();
+		String menu_id = boardDto.getMenu_id();
+		
+		BoardDto board = boardMapper.getBoard(boardDto);
+		
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("board/update");
+		mv.addObject("menu_id", menu_id);
+		mv.addObject("menuList", menuList);
+		
+		mv.addObject("board",board);
+		return mv;
+	}
+// --------------------------------------------------------------	
+	@RequestMapping("/Update")
+	public ModelAndView update (BoardDto boardDto) {
+		String menu_id = boardDto.getMenu_id();
+		
+		boardMapper.updateBoard(boardDto);
+
+		ModelAndView mv  = new ModelAndView();
+		mv.setViewName("redirect:/Board/List?menu_id=" + menu_id);
+		return mv;
+	}
 	
 	
 	

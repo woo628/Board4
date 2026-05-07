@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 <link rel="shortcut icon" href="/img/favicon1.png" type="image/x-icon">
 <link href="/css/common.css" rel="stylesheet"/>
+<style>
+  main {width: 100%; text-align: center;}
+</style>
 </head>
 <body>
   <main>
@@ -19,7 +22,7 @@
     <div><a href="/Users/Index">회원정보</a></div>    
     <div>&nbsp;</div>
     <div><a href="/Board/List?menu_id=MENU01">게시글 목록</a></div>
-    <div><a href="/Board/WriteForm">게시글 추가</a></div>
+    <div><a href="/Board/WriteForm?menu_id=MENU01">게시글 추가</a></div>
   </main>
   
 </body>

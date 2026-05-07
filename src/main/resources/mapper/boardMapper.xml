@@ -16,19 +16,30 @@
 		    BOARD
 		WHERE
 	    MENU_ID = #{menu_id}
-		ORDER BY IDX DESC
+		ORDER BY IDX ASC
 	</select>
 	
 	<select id="getBoard">
-		select * from Board where idx = #{idx}
+		select * from Board where IDX = #{idx}
 	</select>
 	
 	<delete id="deleteBoard">
-		delete from Board where idx = #{idx}
+		delete from Board where IDX = #{idx}
 	</delete>
 	
 	<update id="incHit">
-		update Board set hit = hit + 1 where idx = #{idx}
+		update Board set hit = hit + 1 where IDX = #{idx}
+	</update>
+	
+	<insert id="insertboard">
+		insert into Board (IDX,MENU_ID,TITLE,CONTENT,WRITER) 
+		 values (
+		 (SELECT NVL( MAX(idx), 0) + 1 FROM Board),
+		 #{menu_id},#{title},#{content},#{writer})
+	</insert>
+	
+	<update id="updateBoard">
+		update Board set title = #{title}, content = #{content}, writer = #{writer} where menu_id = #{menu_id}
 	</update>
 	
 </mapper>

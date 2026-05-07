@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="shortcut icon" href="/img/favicon1.png" type="image/x-icon">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet"/>
 <style>
  table {width: 100%; text-align: center;}
@@ -20,12 +21,13 @@
  main {margin-bottom: 150px;}
  .title {text-align: left; padding-left: 10px;}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 </head>
 <body>
  <main>
  	<%@include file = "/WEB-INF/include/menus.jsp" %>
- 	<h2>게시글 목록</h2>
- 	<table>
+ 	<h2>${menu_name} 목록</h2>
+ 	<table class="table table-striped">
  	 <tr>
  	 	<td>번호</td>
  	 	<td>제목</td> 	
@@ -35,7 +37,7 @@
  	 </tr>	 
 	   <tr>
 	   	<td colspan="5">
-	   	[<a href="/Board/WriteForm">새 글 추가</a>]&nbsp;&nbsp;&nbsp;
+	   	[<a href="/Board/WriteForm?menu_id=${menu_id}">새 글 추가</a>]&nbsp;&nbsp;&nbsp;
 	   	[<a href="/">돌아가기</a>]
 	   	</td>
 	   </tr>
