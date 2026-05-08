@@ -9,9 +9,12 @@
 <link href="/css/common.css" rel="stylesheet"/>
 <style>
   table {width: 100%; text-align: center;}
-  textarea {width: 100%; height: 400px;}
+  textarea {width: 100%; height: 400px; padding: 10px;}
   form {width: 100%;}
-  input[type=submit],input[type=button] {}
+  input[type=submit] {margin-right: 10px;}
+  input[type=submit],input[type=button] {float: right;}
+  input[name=title] {margin-bottom: 10px;}
+  p {margin-bottom: 10px; margin-top: 10px; font-weight: bold;}
 </style>
 </head>
 <body>
@@ -26,8 +29,8 @@
    	<input type="text" name="writer">
    	<p>내용</p> 
    	<textarea name="content" placeholder="내용을 입력하세요"></textarea><br>  
-   	<input type="submit" value="등록">
    	<a href="/Board/List?menu_id=${menu_id}"><input type="button" value="돌아가기"></a>
+   	<input type="submit" value="등록">
    </form>
  </main>
 </body>

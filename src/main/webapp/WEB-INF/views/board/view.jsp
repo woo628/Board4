@@ -10,7 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <link href="/css/common.css" rel="stylesheet"/>
 <style>
-  table { width: 100%;}
+  table { width: 100%; }
   td { padding: 5px 10px; text-align: center; width: 150px;}
   td:nth-of-type(1) {background: black; color: white; border-bottom-color: white;}
   td:nth-of-type(3) {background: black; color: white; border-bottom-color: white;}

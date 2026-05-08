@@ -11,13 +11,7 @@
 <link href="/css/common.css" rel="stylesheet"/>
 <style>
  table {width: 100%; text-align: center;}
- td::nth-of-type(1){width: 100px;}
- td::nth-of-type(2){width: 300px;}
- td::nth-of-type(3){width: 100px;}
- td::nth-of-type(4){width: 100px;}
- td::nth-of-type(5){width: 100px;}
  tr:first-child {background-color: black; color: white;}
- tr:nth-of-type(2) td {text-align: right; padding-right: 20px;} 
  main {margin-bottom: 150px;}
  .title {text-align: left; padding-left: 10px;}
 </style>
@@ -28,6 +22,13 @@
  	<%@include file = "/WEB-INF/include/menus.jsp" %>
  	<h2>${menu_name} 목록</h2>
  	<table class="table table-striped">
+ 	 <colgroup>
+        <col style="width: 8%;" />  <!-- 번호 -->
+        <col style="width: 47%;" /> <!-- 제목 -->
+        <col style="width: 15%;" /> <!-- 작성자 -->
+        <col style="width: 20%;" /> <!-- 날짜 -->
+        <col style="width: 10%;" /> <!-- 조회수 -->
+   	 </colgroup>
  	 <tr>
  	 	<td>번호</td>
  	 	<td>제목</td> 	
@@ -36,7 +37,7 @@
  	 	<td>조회수</td>	
  	 </tr>	 
 	   <tr>
-	   	<td colspan="5">
+	   	<td colspan="5" style="text-align: right; padding-right: 20px;">
 	   	[<a href="/Board/WriteForm?menu_id=${menu_id}">새 글 추가</a>]&nbsp;&nbsp;&nbsp;
 	   	[<a href="/">돌아가기</a>]
 	   	</td>
@@ -44,7 +45,7 @@
  	 <c:forEach var="board" items="${boardList}">
 	   <tr>
 	   	<td>${board.idx}</td>
-	   	<td class="title"><a href="/Board/View?idx=${board.idx}">${board.title}</a></td>
+	   	<td class="title"><a href="/Board/View?idx=${board.idx}&menu_id=${menu_id}">${board.title}</a></td>
 	   	<td>${board.writer}</td>
 	   	<td>${board.regdate}</td>
 	   	<td>${board.hit}</td>

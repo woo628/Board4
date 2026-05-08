@@ -39,7 +39,7 @@
 	</insert>
 	
 	<update id="updateBoard">
-		update Board set title = #{title}, content = #{content}, writer = #{writer} where menu_id = #{menu_id}
+		update Board set title = #{title}, content = #{content} where IDX = #{idx}
 	</update>
 	
 </mapper>

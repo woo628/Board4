@@ -81,7 +81,7 @@ public class BoardController {
 		
 		String menu_id = boardDto.getMenu_id();
 		// db 의 자료를 삭제
-		boardMapper.deleteBoard(boardDto );
+		boardMapper.deleteBoard(boardDto);
 		
 		// 목록으로 이동
 		ModelAndView mv  = new ModelAndView();
@@ -98,12 +98,18 @@ public class BoardController {
 		// idx로 조회한 글
 		BoardDto board = boardMapper.getBoard(boardDto);
 		
+		String menu_id = boardDto.getMenu_id();
+		String menu_name = menuMapper.getname(menu_id);
+		
+		// content 안에 있는 \n를 <br>로 변경
+		if(board !=null && board.getContent() != null)
 		board.setContent(board.getContent().replace("\n", "<br>"));
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/view");
 		mv.addObject("board",board);
 		mv.addObject("menuList", menuList);
+		mv.addObject("menu_name", menu_name);
 		return mv;
 	}
 // --------------------------------------------------------------
@@ -111,16 +117,17 @@ public class BoardController {
 	public ModelAndView updateform (BoardDto boardDto) {
 		
 		List<MenuDTO> menuList = menuMapper.getMenuList();
-		String menu_id = boardDto.getMenu_id();
 		
 		BoardDto board = boardMapper.getBoard(boardDto);
 		
+		String menu_id = boardDto.getMenu_id();
+		String menu_name = menuMapper.getname(menu_id);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("board/update");
 		mv.addObject("menu_id", menu_id);
 		mv.addObject("menuList", menuList);
-		
+		mv.addObject("menu_name", menu_name);
 		mv.addObject("board",board);
 		return mv;
 	}
