@@ -14,6 +14,7 @@
   input[type=submit] {margin-right: 10px;}
   input[type=submit],input[type=button] {float: right;}
   input[name=title] {margin-bottom: 10px;}
+  input[type=text] {padding: 5px;}
   p {margin-bottom: 10px; margin-top: 10px; font-weight: bold;}
 </style>
 </head>
